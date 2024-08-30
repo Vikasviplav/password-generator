@@ -23,8 +23,9 @@ function App() {
 
     for (let i = 1; i <= length; i++) {
       let char = Math.floor(Math.random() * string.length + 1)
-      pass += string[char]
+      pass += string.charAt(char)
     }
+    buttonRef.current.title = "click to copy password"
     setPassword(pass)
   }, [length, numberAllowed, characterAllowed, setPassword])
 
@@ -48,7 +49,7 @@ function App() {
       rounded-lg px-4 py-4 my-8 text-orange-500 bg-gray-700 '>
         <h2 className='text-4xl text-center text-white'>Password Generator</h2>
         <div className='m-4'>
-          <input className='p-2 mx-2 rounded-lg' value={password} ref={passwordRef}>
+          <input className='p-2 mx-2 min-w-72 rounded-lg' value={password} ref={passwordRef}>
           </input>
           <button className='m-1 p-2 bg-blue-700 rounded-lg' ref={buttonRef}
             onClick={() => copyPasswordToClipboard()} title='click to copy password'>copy</button>
